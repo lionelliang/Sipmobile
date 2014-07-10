@@ -1,0 +1,19 @@
+#!/usr/bin/php -q
+<?php
+set_time_limit(30);
+include("phpagi/phpagi.php");
+$start_time=time();
+$agi = new AGI();
+$cid = $agi->parse_callerid();
+$agi->text2wav("bonjour, {$cid['name']}.");
+do{
+	$agi->text2wav('pound key to end number 111 to quit.');
+	$result = $agi->get_data('beep', 3000, 20);
+	$keys = $result['result'];
+	$agi->text2wav("You entered $keys");
+} while($keys != '111');
+$agi->text2wav('Goodbye');
+$end_time=time();
+$agi->verbose($end_time-$start_time);
+$agi->hangup();
+?>

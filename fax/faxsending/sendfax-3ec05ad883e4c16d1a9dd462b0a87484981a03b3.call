@@ -1,0 +1,7 @@
+Channel: SIP/sipcomdevtrunk/0143006375
+WaitTime: 120
+Maxretries: 3
+RetryTime: 300
+Account: 10000
+Application: SendFax
+Data: /var/www/sipcom/data/fax/faxsending/m2_modification_personne_morale.tiff
